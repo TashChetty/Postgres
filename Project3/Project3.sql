@@ -95,9 +95,9 @@ SELECT * FROM "Users"
 --Adding a coke to the Cart
 INSERT INTO public."Cart" (product_id, qty)
 VALUES	(1, 1);
-SELECT * FROM "Cart"
+SELECT * FROM "Cart";
 
---add a coke (if product exist, update quantity by 1; otherwise insert with quantity 1)
+--add coke (if product exist, update quantity by 1; otherwise insert with quantity 1)
 
 DO $$
 BEGIN
@@ -109,12 +109,13 @@ BEGIN
 END IF;
 END $$;
 	SELECT * FROM "Cart";
---add chips to the Cart
+
+--add chips 
 INSERT INTO public."Cart" (product_id, qty)
 VALUES	(2, 1);
 	SELECT * FROM "Cart";
---update Cart with sweets
 
+--update Cart with sweets
 DO $$
 BEGIN
       IF EXISTS (SELECT * FROM public."Cart" WHERE product_id = 3) 
@@ -161,7 +162,7 @@ SELECT * FROM public."Cart";
 
 SELECT * FROM public."OrderDetails"
 
--- Printing OrderHeader table for single and multiple orders 
+-- Printing OrderHeader table  
 -- Single order
 
 SELECT	order_id,
